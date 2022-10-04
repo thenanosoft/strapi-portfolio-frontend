@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/strapi-portfolio-frontend/static/css/main.e238d1ba.css",
-    "main.js": "/strapi-portfolio-frontend/static/js/main.50d9fbdc.js",
+    "main.js": "/strapi-portfolio-frontend/static/js/main.307221f2.js",
     "index.html": "/strapi-portfolio-frontend/index.html",
     "main.e238d1ba.css.map": "/strapi-portfolio-frontend/static/css/main.e238d1ba.css.map",
-    "main.50d9fbdc.js.map": "/strapi-portfolio-frontend/static/js/main.50d9fbdc.js.map"
+    "main.307221f2.js.map": "/strapi-portfolio-frontend/static/js/main.307221f2.js.map"
   },
   "entrypoints": [
     "static/css/main.e238d1ba.css",
-    "static/js/main.50d9fbdc.js"
+    "static/js/main.307221f2.js"
   ]
 }
