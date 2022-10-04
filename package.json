@@ -1,6 +1,6 @@
 {
   "name": "frontend",
-  "homepage": "http://thenanosoft.github.io/strapi-portfolio-frontend",
+  "homepage": "https://thenanosoft.github.io/strapi-portfolio-frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
