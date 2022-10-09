@@ -2,10 +2,11 @@ import React from 'react'
 import {useQuery, gql} from '@apollo/client'
 import { useParams, Link } from 'react-router-dom'
 import { PostGrid } from './components'
+import {Row} from 'react-bootstrap'
 
 const GetLanguage = gql`
 query Language($slug: String!) {
-  languages (filters: {slug: {eq: $slug}}) {
+  tags (filters: {slug: {eq: $slug}}) {
     data  {
       id,
       attributes {
@@ -19,14 +20,14 @@ query Language($slug: String!) {
                   title,
                   date,
                   description,
-                  featuredImage {
+                  image {
                       data {
                           attributes {
                               formats 
                           }
                       }
                   },
-                  languages {
+                  tags {
                       data {
                           attributes {
                               name,
@@ -62,10 +63,12 @@ const Tags = () => {
   console.log(data)
   return (
     <div>
-      <h1 className='display-4 pb-2 my-5 text-tertiary-color'>{data.languages.data[0].attributes.name} - {data.languages.data[0].attributes.portfolios.data.length}</h1>
-      {data.languages.data[0].attributes.portfolios.data.map(item => (
+      <h1 className='display-4 pb-2 my-5 text-tertiary-color'>{data.tags.data[0].attributes.name} - {data.tags.data[0].attributes.portfolios.data.length}</h1>
+      <Row>
+      {data.tags.data[0].attributes.portfolios.data.map(item => (
             <PostGrid item={item} />
         ))}
+      </Row>
     </div>
     
   )

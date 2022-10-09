@@ -2,7 +2,7 @@ import React from 'react'
 import { useQuery, gql } from '@apollo/client'
 import { useParams, Link } from 'react-router-dom'
 import { PostGrid } from './components'
-import ArchiveHeroSection from './components/ArchiveHeroSection'
+import {Row} from 'react-bootstrap'
 
 const GetCategories = gql`
 query Categories($slug: String!) {
@@ -20,14 +20,14 @@ query Categories($slug: String!) {
                             title,
                             date,
                             description,
-                            featuredImage {
+                            image {
                                 data {
                                     attributes {
                                         formats 
                                     }
                                 }
                             },
-                            languages {
+                            tags {
                                 data {
                                     id,
                                     attributes {
@@ -65,9 +65,11 @@ const Category = () => {
   return (
     <div>
         <h1 className='display-4 pb-2 my-5 text-tertiary-color'>{data.categories.data[0].attributes.name} - {data.categories.data[0].attributes.portfolios.data.length}</h1>
+        <Row>
         {data.categories.data[0].attributes.portfolios.data.map(item => (
             <PostGrid item={item} />
         ))}
+        </Row>
     </div>
   )
 }

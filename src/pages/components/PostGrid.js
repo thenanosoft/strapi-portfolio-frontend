@@ -7,17 +7,22 @@ const PostGrid = ({item}) => {
   return (
     <Col key={item.id} sm={12} md={6} lg={4} xl={4} className="mb-2">
                 <Card variant="top" className="card-img h-100">
+                    {item.attributes.gallery.data.length === 0 &&
+                        <Link to={`/portfolio/${item.attributes.slug}`}><Card.Img src={`${process.env.REACT_APP_BACKEND_BASE_URL}${item.attributes.image.data.attributes.formats.medium.url}`} /></Link>
+                    }
+                    {item.attributes.gallery.data.length > 0 && 
                     <Carousel>
-                    <Carousel.Item><Link to={`/portfolio/${item.attributes.slug}`}><Card.Img src={`${process.env.REACT_APP_BACKEND_BASE_URL}${item.attributes.featuredImage.data.attributes.formats.thumbnail.url}`} /></Link></Carousel.Item>
-                          {item.attributes.gallery.data.map(gallery => (
-                              <Carousel.Item><Link to={`/portfolio/${item.attributes.slug}`}><Card.Img src={`${process.env.REACT_APP_BACKEND_BASE_URL}${gallery.attributes.formats.thumbnail.url}`} /></Link></Carousel.Item>
-                          ))}
+                        <Carousel.Item><Link to={`/portfolio/${item.attributes.slug}`}><Card.Img src={`${process.env.REACT_APP_BACKEND_BASE_URL}${item.attributes.image.data.attributes.formats.medium.url}`} /></Link></Carousel.Item>
+                            {item.attributes.gallery.data.map(gallery => (
+                                <Carousel.Item><Link to={`/portfolio/${item.attributes.slug}`}><Card.Img src={`${process.env.REACT_APP_BACKEND_BASE_URL}${gallery.attributes.formats.thumbnail.url}`} /></Link></Carousel.Item>
+                            ))}
                     </Carousel>
+                    }
                     <Card.Body>
                         <Card.Title>{item.attributes.title}</Card.Title>
                         <Card.Subtitle className="mb-2 text-muted">{item.attributes.date}</Card.Subtitle>
                         <span>
-                            {item.attributes.languages.data.map(language => (
+                            {item.attributes.tags.data.map(language => (
                                 <Link to={`/tag/${language.attributes.slug}`}>
                                     <Badge className="bg-primary-color" key={language.id}>#{language.attributes.name}</Badge>
                                 </Link>

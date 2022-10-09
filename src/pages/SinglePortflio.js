@@ -14,14 +14,14 @@ const GetPortfolio = gql`
                 title,
                 date,
                 description,
-                featuredImage {
+                image {
                     data {
                         attributes {
                             url
                         }
                     }
                 },
-                languages {
+                tags {
                     data {
                         attributes {
                             name,
@@ -63,7 +63,7 @@ const SinglePortflio = () => {
                             <span>Farhan Ellahi</span>
                         </p>
                         <span>
-                                {data.portfolios.data[0].attributes.languages.data.map(language => (
+                                {data.portfolios.data[0].attributes.tags.data.map(language => (
                                     <Link to={`/tag/${language.attributes.slug}`}>
                                         <Badge bg='none' className="bg-quaternary-color text-primary-color" key={language.id}>#{language.attributes.name}</Badge>
                                     </Link>
@@ -72,11 +72,15 @@ const SinglePortflio = () => {
                     </div>
             <Row className='post-detail rounded-top shadow pt-3 bg-quaternary-color'>
                 <Col lg={12} md={12} sm={12}>
-                    <Carousel>
+                    {data.portfolios.data[0].attributes.gallery.data.length === 0 &&
+                        <Link to={`/portfolio/${data.portfolios.data[0].attributes.slug}`}><Card.Img id="featued-img" src={`${process.env.REACT_APP_BACKEND_BASE_URL}${data.portfolios.data[0].attributes.image.data.attributes.url}`} /></Link>
+                    }
+                    {data.portfolios.data[0].attributes.gallery.data.length > 0 && <Carousel>
+                    <Carousel.Item><Link to={`/portfolio/${data.portfolios.data[0].attributes.slug}`}><Card.Img id="featued-img" src={`${process.env.REACT_APP_BACKEND_BASE_URL}${data.portfolios.data[0].attributes.image.data.attributes.url}`} /></Link></Carousel.Item>
                             {data.portfolios.data[0].attributes.gallery.data.map(gallery => (
-                                <Carousel.Item className='rounded'><Card.Img  id="featued-img" className='mb-5 rounded border border-warning' src={`${process.env.REACT_APP_BACKEND_BASE_URL}${gallery.attributes.formats.large.url}`} /></Carousel.Item>
+                                <Carousel.Item className='rounded'><Card.Img  id="featued-img" src={`${process.env.REACT_APP_BACKEND_BASE_URL}${gallery.attributes.formats.large.url}`} /></Carousel.Item>
                             ))}
-                    </Carousel>
+                    </Carousel>}
                     <ReactMarkdown>{data.portfolios.data[0].attributes.description}</ReactMarkdown>
                 </Col>
             </Row> 

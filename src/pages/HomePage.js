@@ -19,7 +19,7 @@ const PORTFOLIOS = gql`
                     title,
                     date,
                     description,
-                    languages {
+                    tags {
                         data {
                             id, 
                             attributes {
@@ -28,7 +28,7 @@ const PORTFOLIOS = gql`
                             }
                         }
                     },
-                    featuredImage {
+                    image {
                         data {
                             attributes {
                                 formats
