@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/client';
 import client from './utils/apolloClient';
 import SiteHeader from './components/SiteHeader';
@@ -26,7 +26,7 @@ function App() {
           <SiteHeader />
           <Container>
             <Routes>
-              <Route exact path="/" element={<HomePage />}> </Route>
+              <Route exact path="/strapi-portfolio-frontend/" element={<HomePage />}> </Route>
               <Route path="/category/:slug" element={<Category />} />
               <Route path="/portfolio/:slug" element={<SinglePortflio />} />
               <Route path="/tag/:slug" element={<Portfolio />} />

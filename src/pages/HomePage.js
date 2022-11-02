@@ -7,11 +7,6 @@ import {HeroSection, StatCard} from './components'
 const PORTFOLIOS = gql`
     query GetPortfolios {
         portfolios {
-            meta {
-                pagination {
-                    total
-                }
-            }
             data {
                 id,
                 attributes {
