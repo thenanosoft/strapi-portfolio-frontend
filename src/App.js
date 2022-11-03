@@ -14,7 +14,7 @@ import './pages/components/index.css'
 function App() {
   return (
 
-    <Router>
+    <Router >
       <ApolloProvider client={client}>
 
         <Container style={{
@@ -26,7 +26,7 @@ function App() {
           <SiteHeader />
           <Container>
             <Routes>
-              <Route exact path="/strapi-portfolio-frontend/" element={<HomePage />}> </Route>
+              <Route exact path="/" element={<HomePage />}> </Route>
               <Route path="/category/:slug" element={<Category />} />
               <Route path="/portfolio/:slug" element={<SinglePortflio />} />
               <Route path="/tag/:slug" element={<Portfolio />} />

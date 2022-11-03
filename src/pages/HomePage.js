@@ -1,17 +1,17 @@
 import React from 'react'
-import {useQuery, gql} from '@apollo/client'
+import { useQuery, gql } from '@apollo/client'
 import { PostGrid } from './components'
 import { Container, Row } from 'react-bootstrap'
-import {HeroSection, StatCard} from './components'
+import { HeroSection, StatCard } from './components'
 
 const PORTFOLIOS = gql`
     query GetPortfolios {
         portfolios {
-            meta {
+            meta{
                 pagination {
-                    total
+                  total
                 }
-            }
+              }
             data {
                 id,
                 attributes {
@@ -63,19 +63,19 @@ const HomePage = () => {
     if (loading) return <div>Loading...</div>
     if (error) return <div>Error...</div>
     console.log(data)
-return (
-    <div id='page-id-home-page'>
-        <Container>
-            <HeroSection />
-            <StatCard projects={data.portfolios.meta.pagination.total} />
-        </Container>
-        <Row>
-        {data.portfolios.data.map(item => (
-            <PostGrid item={item} />
-        ))}
-        </Row>
-    </div>
-)
+    return (
+        <div id='page-id-home-page'>
+            <Container>
+                <HeroSection />
+                <StatCard projects={data.portfolios.meta.pagination.total} />
+            </Container>
+            <Row>
+                {data.portfolios.data.map(item => (
+                    <PostGrid item={item} />
+                ))}
+            </Row>
+        </div>
+    )
 }
 
 export default HomePage
