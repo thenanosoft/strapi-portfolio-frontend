@@ -14,7 +14,7 @@ import './pages/components/index.css'
 function App() {
   return (
 
-    <Router >
+    <Router>
       <ApolloProvider client={client}>
 
         <Container style={{
