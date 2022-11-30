@@ -6,7 +6,7 @@ import { HeroSection, StatCard } from './components'
 
 const PORTFOLIOS = gql`
     query GetPortfolios {
-        portfolios {
+        portfolios (sort: "date:desc", pagination: {page: 1, pageSize: 30}) {
             meta{
                 pagination {
                   total
@@ -18,6 +18,7 @@ const PORTFOLIOS = gql`
                     slug,
                     title,
                     date,
+                    excerpt,
                     description,
                     tags {
                         data {
@@ -71,7 +72,7 @@ const HomePage = () => {
             </Container>
             <Row>
                 {data.portfolios.data.map(item => (
-                    <PostGrid item={item} />
+                    <PostGrid key={item.id} item={item} />
                 ))}
             </Row>
         </div>

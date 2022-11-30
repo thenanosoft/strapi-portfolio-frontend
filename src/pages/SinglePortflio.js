@@ -13,6 +13,7 @@ const GetPortfolio = gql`
             attributes {
                 title,
                 date,
+                slug,
                 description,
                 image {
                     data {
@@ -53,7 +54,7 @@ const SinglePortflio = () => {
     console.log(data)
     return (
         <div id='page-id-single-post'>
-                    <div className=' my-5 text-quaternary-color'>
+                    <div className='my-5 text-quaternary-color'>
                         <Row>
                                 <h1 className='display-4'>{data.portfolios.data[0].attributes.title}</h1>
                         </Row>
@@ -70,10 +71,10 @@ const SinglePortflio = () => {
                                 ))}
                             </span>
                     </div>
-            <Row className='post-detail rounded-top shadow pt-3 bg-quaternary-color'>
+            <Row className='post-detail rounded-top pt-3 mb-5 bg-quaternary-color shadow-lg'>
                 <Col lg={12} md={12} sm={12}>
                     {data.portfolios.data[0].attributes.gallery.data.length === 0 &&
-                        <Link to={`/portfolio/${data.portfolios.data[0].attributes.slug}`}><Card.Img id="featued-img" src={`${data.portfolios.data[0].attributes.image.data.attributes.url}`} /></Link>
+                        <Link to={`${data.portfolios.data[0].attributes.image.data.attributes.url}`}><Card.Img id="featued-img" src={`${data.portfolios.data[0].attributes.image.data.attributes.url}`} /></Link>
                     }
                     {data.portfolios.data[0].attributes.gallery.data.length > 0 && <Carousel>
                     <Carousel.Item><Link to={`/portfolio/${data.portfolios.data[0].attributes.slug}`}><Card.Img id="featued-img" src={`${data.portfolios.data[0].attributes.image.data.attributes.url}`} /></Link></Carousel.Item>

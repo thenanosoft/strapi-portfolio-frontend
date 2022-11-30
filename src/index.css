@@ -132,4 +132,8 @@ span a:not(:first-child) .badge {
   img, #page-id-home-page .card-img, #page-id-single-post #featued-img {
     height: auto;
   }
+
+  .lead {
+    font-size: 1rem;
+  }
 }
