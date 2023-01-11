@@ -114,6 +114,10 @@ span a:not(:first-child) .badge {
   transition: all .3s ease-in-out;
 }
 
+.card-footer span a:not(:first-child) {
+  margin-left: 10px;
+}
+
 #page-id-single-post #featued-img {
   width: 100%;
   height: 58vh;

@@ -15,6 +15,8 @@ const GetPortfolio = gql`
                 date,
                 slug,
                 description,
+                previewSlug,
+                    githubSlug,
                 image {
                     data {
                         attributes {

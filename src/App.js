@@ -34,7 +34,7 @@ function App() {
               <SiteHeader />
               <Container>
                 <Routes>
-                  <Route exact path="/" element={<HomePage />}> </Route>
+                  <Route path="/" element={<HomePage />}> </Route>
                   <Route path="/category/:slug" element={<Category />} />
                   <Route path="/portfolio/:slug" element={<SinglePortflio />} />
                   <Route path="/tag/:slug" element={<Portfolio />} />

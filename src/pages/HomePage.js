@@ -20,6 +20,8 @@ const PORTFOLIOS = gql`
                     date,
                     excerpt,
                     description,
+                    previewSlug,
+                    githubSlug,
                     tags {
                         data {
                             id, 

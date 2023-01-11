@@ -1,6 +1,6 @@
 import React from 'react'
 import Card from 'react-bootstrap/Card'
-import { Badge, Col, Carousel } from 'react-bootstrap'
+import { Badge, Row, Col, Carousel } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 const PostGrid = ({item}) => {
@@ -34,6 +34,13 @@ const PostGrid = ({item}) => {
                     {/* <Card.Footer>
                         <Link to={`/category/${item.attributes.category.data?.attributes.slug}`}><small className="text-muted">=&gt; {item.attributes.category.data?.attributes.name}</small></Link>
                     </Card.Footer> */}
+
+                    <Card.Footer>
+                        <span>
+                            {item.attributes.previewSlug != null && <a target="_blank" href={item.attributes.previewSlug}>Live</a>}
+                            {item.attributes.githubSlug != null && <a target="_blank" href={item.attributes.githubSlug}>Github</a>}
+                        </span>
+                    </Card.Footer>
                 </Card>
             </Col>
   )

@@ -19,7 +19,10 @@ query Categories($slug: String!) {
                             slug,
                             title,
                             date,
+                            excerpt,
                             description,
+                            previewSlug,
+                    githubSlug,
                             image {
                                 data {
                                     attributes {
